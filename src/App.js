@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import CreateTodo from './components/CreateTodo';
+import TodoList from './components/TodoList';
 import './App.css';
+
+const tasks = [
+  {
+    title: 'cook',
+    detail: 'use knife to cut stuff',
+    status: 1,
+    taskID: 1,
+  },
+  {
+    title: 'clean house',
+    detail: 'use gasoline',
+    status: 0,
+    taskID: 0,
+  },
+];
+
+const[newTask,setNewTask] = React.useState('');
+const handleNewTaskChange = event => {
+  setNewTask(event.target.value);
+};
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <TodoList list={tasks}/>
+      <CreateTodo inputChange={handleNewTaskChange}/>
     </div>
   );
-}
+};
 
 export default App;
