@@ -32,19 +32,24 @@ const App = () => {
   const handleNewtaskSubmit = event => {
     let newTask = new Task(newInput);
     setTasks([...TaskList,newTask]);
+    setNewInput('');
     event.preventDefault();
+  }
+  const removeTask = item => {
+    let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
+    setTasks(newTaskList);
   }
 
 
   return (
-    <div className="container">
-      <TodoList list={tasks}/>
+    <section className="container">
+      <TodoList list={tasks} removeTask={removeTask}/>
       <CreateTodo 
         inputValue={newInput} 
         inputChange={handleInputChange} 
         submitNewTask={handleNewtaskSubmit}
       />
-    </div>
+    </section>
   );
 };
 
