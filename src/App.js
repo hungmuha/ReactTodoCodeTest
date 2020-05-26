@@ -3,6 +3,10 @@ import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
 import './App.css';
 
+const swap = function(arr,idx1,idx2) {
+  [arr[idx1],arr[idx2]] = [arr[idx2],arr[idx1]];
+  return arr;
+}
 const Task = function(title) {
   let randomNum = Math.floor(Math.random()*1000*7).toString();
 
@@ -24,9 +28,9 @@ const TaskList = [
 ];
 
 const App = () => {
-  
   const [newInput, setNewInput] = useState('');
   const [tasks,setTasks] = useState(TaskList);
+
   const handleInputChange = event => {
     setNewInput(event.target.value);
   };
@@ -46,11 +50,23 @@ const App = () => {
       return task.taskID === item.taskID ? item : task;
     });
     setTasks(newTaskList);
+  };
+  const moveUp = item => {
+    let itemIndex = tasks.indexOf(item);
+    if(itemIndex > 0) {
+      let newTaskList = swap([...tasks],itemIndex, itemIndex-1);
+      setTasks(newTaskList);
+    }
   }
 
   return (
     <section className="container">
-      <TodoList list={tasks} removeTask={removeTask} changeStatus={toggleStatus}/>
+      <TodoList 
+        list={tasks}
+        removeTask={removeTask} 
+        changeStatus={toggleStatus}
+        moveUp={moveUp}
+      />
       <CreateTodo 
         inputValue={newInput} 
         inputChange={handleInputChange} 

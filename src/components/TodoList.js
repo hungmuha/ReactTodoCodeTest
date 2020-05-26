@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 
-const TodoList = ({list, removeTask, changeStatus}) => {
+const TodoList = ({list, removeTask, changeStatus, moveUp}) => {
     let displaylist = list.map((item) => {
         return (
             <Item 
@@ -9,6 +9,7 @@ const TodoList = ({list, removeTask, changeStatus}) => {
                 item = {item} 
                 removeTask = {removeTask}
                 changeStatus = {changeStatus}
+                moveUp = {moveUp}
             />
         )
     });
