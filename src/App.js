@@ -57,7 +57,14 @@ const App = () => {
       let newTaskList = swap([...tasks],itemIndex, itemIndex-1);
       setTasks(newTaskList);
     }
-  }
+  };
+  const moveDown = item => {
+    let itemIndex = tasks.indexOf(item);
+    if(itemIndex < tasks.length - 1) {
+      let newTaskList = swap([...tasks],itemIndex, itemIndex+1);
+      setTasks(newTaskList);
+    }
+  };
 
   return (
     <section className="container">
@@ -66,6 +73,7 @@ const App = () => {
         removeTask={removeTask} 
         changeStatus={toggleStatus}
         moveUp={moveUp}
+        moveDown={moveDown}
       />
       <CreateTodo 
         inputValue={newInput} 
