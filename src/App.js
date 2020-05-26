@@ -7,18 +7,18 @@ const Task = function(title) {
   let randomNum = Math.floor(Math.random()*1000*7).toString();
 
   this.title = title;
-  this.status = 0;
+  this.complete = false;
   this.taskID = randomNum.concat('-',Date.now());
 }
 const TaskList = [
   {
     title: 'cook',
-    status: 1,
+    complete: true,
     taskID: 1,
   },
   {
     title: 'clean house',
-    status: 0,
+    complete: false,
     taskID: 0,
   },
 ];
@@ -40,12 +40,17 @@ const App = () => {
     let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
     setTasks(newTaskList);
   };
-  
-
+  const toggleStatus = item => {
+    item.complete = !item.complete;
+    let newTaskList = tasks.map((task) => {
+      return task.taskID === item.taskID ? item : task;
+    });
+    setTasks(newTaskList);
+  }
 
   return (
     <section className="container">
-      <TodoList list={tasks} removeTask={removeTask}/>
+      <TodoList list={tasks} removeTask={removeTask} changeStatus={toggleStatus}/>
       <CreateTodo 
         inputValue={newInput} 
         inputChange={handleInputChange} 

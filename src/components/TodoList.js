@@ -1,13 +1,14 @@
 import React from 'react';
 import Item from './Item';
 
-const TodoList = ({list, removeTask}) => {
+const TodoList = ({list, removeTask, changeStatus}) => {
     let displaylist = list.map((item) => {
         return (
             <Item 
                 key = {item.taskID} 
                 item = {item} 
                 removeTask = {removeTask}
+                changeStatus = {changeStatus}
             />
         )
     });
