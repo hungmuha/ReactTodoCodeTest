@@ -17,19 +17,7 @@ const Task = function(title) {
   this.title = title;
   this.complete = false;
   this.taskID = randomNum.concat('-',Date.now());
-}
-const TaskList = [
-  {
-    title: 'cook',
-    complete: true,
-    taskID: 1,
-  },
-  {
-    title: 'clean house',
-    complete: false,
-    taskID: 0,
-  },
-];
+};
 const useCustomLocalState = (key,initialState) => {
   const [value,setValue] = useState(JSON.parse(localStorage.getItem(key))||initialState);
 
