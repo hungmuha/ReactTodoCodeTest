@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/hungmuha/ReactTodoCodeTest/static/css/main.b2e65152.chunk.css",
-    "main.js": "/hungmuha/ReactTodoCodeTest/static/js/main.65f03099.chunk.js",
-    "main.js.map": "/hungmuha/ReactTodoCodeTest/static/js/main.65f03099.chunk.js.map",
-    "runtime-main.js": "/hungmuha/ReactTodoCodeTest/static/js/runtime-main.04367296.js",
-    "runtime-main.js.map": "/hungmuha/ReactTodoCodeTest/static/js/runtime-main.04367296.js.map",
-    "static/js/2.7945e728.chunk.js": "/hungmuha/ReactTodoCodeTest/static/js/2.7945e728.chunk.js",
-    "static/js/2.7945e728.chunk.js.map": "/hungmuha/ReactTodoCodeTest/static/js/2.7945e728.chunk.js.map",
-    "index.html": "/hungmuha/ReactTodoCodeTest/index.html",
-    "precache-manifest.74cf96ee4dc24dbaafea662ce6c63d5a.js": "/hungmuha/ReactTodoCodeTest/precache-manifest.74cf96ee4dc24dbaafea662ce6c63d5a.js",
-    "service-worker.js": "/hungmuha/ReactTodoCodeTest/service-worker.js",
-    "static/css/main.b2e65152.chunk.css.map": "/hungmuha/ReactTodoCodeTest/static/css/main.b2e65152.chunk.css.map",
-    "static/js/2.7945e728.chunk.js.LICENSE.txt": "/hungmuha/ReactTodoCodeTest/static/js/2.7945e728.chunk.js.LICENSE.txt"
+    "main.css": "/ReactTodoCodeTest/static/css/main.b2e65152.chunk.css",
+    "main.js": "/ReactTodoCodeTest/static/js/main.ea9b3cf5.chunk.js",
+    "main.js.map": "/ReactTodoCodeTest/static/js/main.ea9b3cf5.chunk.js.map",
+    "runtime-main.js": "/ReactTodoCodeTest/static/js/runtime-main.7c1591e6.js",
+    "runtime-main.js.map": "/ReactTodoCodeTest/static/js/runtime-main.7c1591e6.js.map",
+    "static/js/2.7945e728.chunk.js": "/ReactTodoCodeTest/static/js/2.7945e728.chunk.js",
+    "static/js/2.7945e728.chunk.js.map": "/ReactTodoCodeTest/static/js/2.7945e728.chunk.js.map",
+    "index.html": "/ReactTodoCodeTest/index.html",
+    "precache-manifest.048db22c19e5bbaf386fdb0462809f3d.js": "/ReactTodoCodeTest/precache-manifest.048db22c19e5bbaf386fdb0462809f3d.js",
+    "service-worker.js": "/ReactTodoCodeTest/service-worker.js",
+    "static/css/main.b2e65152.chunk.css.map": "/ReactTodoCodeTest/static/css/main.b2e65152.chunk.css.map",
+    "static/js/2.7945e728.chunk.js.LICENSE.txt": "/ReactTodoCodeTest/static/js/2.7945e728.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.04367296.js",
+    "static/js/runtime-main.7c1591e6.js",
     "static/js/2.7945e728.chunk.js",
     "static/css/main.b2e65152.chunk.css",
-    "static/js/main.65f03099.chunk.js"
+    "static/js/main.ea9b3cf5.chunk.js"
   ]
 }
