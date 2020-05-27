@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
 import SearchBar from './components/SearchBar';
@@ -27,12 +27,20 @@ const TaskList = [
     taskID: 0,
   },
 ];
+const useCustomLocalState = (key,initialState) => {
+  const [value,setValue] = useState(JSON.parse(localStorage.getItem(key))||initialState);
+
+  useEffect(() => {
+    localStorage.setItem(key,JSON.stringify(value));
+  },[key,value]);
+  
+  return [value,setValue];
+}
 
 const App = () => {
   const [newInput, setNewInput] = useState('');
   const [searchTerm, setNewSearch] = useState('');
-  const [tasks,setTasks] = useState(TaskList);
-
+  const [tasks,setTasks] = useCustomLocalState('savedTask',TaskList);
   const handleSearchChange = event => {
     setNewSearch(event.target.value);
   }
@@ -45,7 +53,7 @@ const App = () => {
   };
   const handleNewtaskSubmit = event => {
     let newTask = new Task(newInput);
-    setTasks([...TaskList,newTask]);
+    setTasks([...tasks,newTask]);
     setNewInput('');
     event.preventDefault();
   };
@@ -90,25 +98,29 @@ const App = () => {
   }
 
   return (
-    <section className="container">
-      <SearchBar
-        searchValue = {searchTerm}
-        searchChange = {handleSearchChange}
-      />
-      <TodoList 
-        list={searchedTask}
-        removeTask={removeTask} 
-        changeStatus={toggleStatus}
-        moveUp={moveUp}
-        moveDown={moveDown}
-        moveTop = {moveTop}
-        moveBottom = {moveBottom}
-      />
-      <CreateTodo 
-        inputValue={newInput} 
-        inputChange={handleInputChange} 
-        submitNewTask={handleNewtaskSubmit}
-      />
+    <section className="container row justify-content-center">
+      <div className="col-sm-9">
+        <div className="card">
+          <SearchBar
+            searchValue = {searchTerm}
+            searchChange = {handleSearchChange}
+          />
+          <TodoList 
+            list={searchedTask}
+            removeTask={removeTask} 
+            changeStatus={toggleStatus}
+            moveUp={moveUp}
+            moveDown={moveDown}
+            moveTop = {moveTop}
+            moveBottom = {moveBottom}
+          />
+          <CreateTodo 
+            inputValue={newInput} 
+            inputChange={handleInputChange} 
+            submitNewTask={handleNewtaskSubmit}
+          />
+        </div>
+      </div>
     </section>
   );
 };
