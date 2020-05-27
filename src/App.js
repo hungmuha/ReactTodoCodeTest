@@ -4,10 +4,13 @@ import TodoList from './components/TodoList';
 import SearchBar from './components/SearchBar';
 import './App.css';
 
+//this function is used to swap 2 elements in an array
 const swap = function(arr,idx1,idx2) {
   [arr[idx1],arr[idx2]] = [arr[idx2],arr[idx1]];
   return arr;
 }
+const nonEmptyRegex = /\w.*$/i;
+//Task class 
 const Task = function(title) {
   let randomNum = Math.floor(Math.random()*1000*7).toString();
 
@@ -40,7 +43,9 @@ const useCustomLocalState = (key,initialState) => {
 const App = () => {
   const [newInput, setNewInput] = useState('');
   const [searchTerm, setNewSearch] = useState('');
-  const [tasks,setTasks] = useCustomLocalState('savedTask',TaskList);
+  const [isError,setError] = useState(false);
+
+  const [tasks,setTasks] = useCustomLocalState('savedTask',[]);
   const handleSearchChange = event => {
     setNewSearch(event.target.value);
   }
@@ -53,9 +58,14 @@ const App = () => {
   };
   const handleNewtaskSubmit = event => {
     event.preventDefault();
-    let newTask = new Task(newInput);
-    setTasks([...tasks,newTask]);
-    setNewInput('');
+    if(newInput.match(nonEmptyRegex)) {
+      let newTask = new Task(newInput);
+      setTasks([...tasks,newTask]);
+      setNewInput('');
+      setError(false);
+    } else {
+      setError(true);
+    };
   };
   const removeTask = item => {
     let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
@@ -128,6 +138,7 @@ const App = () => {
               inputValue={newInput} 
               inputChange={handleInputChange} 
               submitNewTask={handleNewtaskSubmit}
+              isError= {isError}
             />
           </div>
         </div>

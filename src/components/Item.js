@@ -30,7 +30,7 @@ const Item = ({item, removeTask, changeStatus, moveUp, moveDown,moveTop,moveBott
                     value={item.title}
                 />             
             </div>        
-            <button type="button" className="btn btn-danger btn-sm" onClick={()=> removeTask(item)}>Remove</button>
+            <button type="button" className="btn btn-danger btn-sm" onClick={()=> removeTask(item)}>Delete</button>
         </div>
     )
 }
