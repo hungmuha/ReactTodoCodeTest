@@ -99,26 +99,29 @@ const App = () => {
 
   return (
     <section className="container row justify-content-center">
-      <div className="col-sm-9">
+      <div className="col-sm-10">
         <div className="card">
-          <SearchBar
-            searchValue = {searchTerm}
-            searchChange = {handleSearchChange}
-          />
-          <TodoList 
-            list={searchedTask}
-            removeTask={removeTask} 
-            changeStatus={toggleStatus}
-            moveUp={moveUp}
-            moveDown={moveDown}
-            moveTop = {moveTop}
-            moveBottom = {moveBottom}
-          />
-          <CreateTodo 
-            inputValue={newInput} 
-            inputChange={handleInputChange} 
-            submitNewTask={handleNewtaskSubmit}
-          />
+          <div className="card-body">
+            <h2 className="card-title text-uppercase">To Do List</h2>
+            <SearchBar
+              searchValue = {searchTerm}
+              searchChange = {handleSearchChange}
+            />
+            <TodoList 
+              list={searchedTask}
+              removeTask={removeTask} 
+              changeStatus={toggleStatus}
+              moveUp={moveUp}
+              moveDown={moveDown}
+              moveTop = {moveTop}
+              moveBottom = {moveBottom}
+            />
+            <CreateTodo 
+              inputValue={newInput} 
+              inputChange={handleInputChange} 
+              submitNewTask={handleNewtaskSubmit}
+            />
+          </div>
         </div>
       </div>
     </section>

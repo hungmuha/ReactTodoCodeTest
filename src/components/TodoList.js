@@ -18,10 +18,8 @@ const TodoList = ({list, removeTask, changeStatus, moveUp, moveDown,moveTop,move
     });
 
     return(
-        <div className="row justify-content-center">
-            <div className="col-sm-9">
-                {displaylist}
-            </div>
+        <div className="list-group">
+            {displaylist}
         </div>
     );
 };
