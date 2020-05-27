@@ -52,10 +52,10 @@ const App = () => {
     setNewInput(event.target.value);
   };
   const handleNewtaskSubmit = event => {
+    event.preventDefault();
     let newTask = new Task(newInput);
     setTasks([...tasks,newTask]);
     setNewInput('');
-    event.preventDefault();
   };
   const removeTask = item => {
     let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
@@ -105,9 +105,9 @@ const App = () => {
   }
 
   return (
-    <section className="container row justify-content-center ">
-      <div className="col-sm-10">
-        <div className="card shadow">
+    <section className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="card shadow col-md-6">
           <div className="card-body">
             <h2 className="card-title text-uppercase">To Do List</h2>
             <SearchBar

@@ -2,7 +2,8 @@
   text-align: center;
 }
 
-input[type=checkbox]:checked + label.todo-task{
+input.todo-task.complete{
   text-decoration: line-through;
+  color: #E9ECEF;
 }
 

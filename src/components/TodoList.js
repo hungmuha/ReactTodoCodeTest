@@ -19,7 +19,7 @@ const TodoList = ({list, removeTask, changeStatus, moveUp, moveDown,moveTop,move
     });
 
     return(
-        <div className="list-group">
+        <div className="list-group shadow-sm">
             {displaylist}
         </div>
     );
