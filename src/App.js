@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
+import SearchBar from './components/SearchBar';
 import './App.css';
 
 const swap = function(arr,idx1,idx2) {
@@ -29,7 +30,15 @@ const TaskList = [
 
 const App = () => {
   const [newInput, setNewInput] = useState('');
+  const [searchTerm, setNewSearch] = useState('');
   const [tasks,setTasks] = useState(TaskList);
+
+  const handleSearchChange = event => {
+    setNewSearch(event.target.value);
+  }
+  const searchedTask = tasks.filter(task => 
+    task.title.toLowerCase().includes(searchTerm.toLowerCase())  
+  );
 
   const handleInputChange = event => {
     setNewInput(event.target.value);
@@ -65,15 +74,35 @@ const App = () => {
       setTasks(newTaskList);
     }
   };
+  const moveTop = item => {
+    let itemIndex = tasks.indexOf(item);
+    if(itemIndex > 0) {
+      let newTaskList = swap([...tasks],itemIndex, 0);
+      setTasks(newTaskList);
+    }
+  }
+  const moveBottom = item => {
+    let itemIndex = tasks.indexOf(item);
+    if(itemIndex < tasks.length - 1) {
+      let newTaskList = swap([...tasks],itemIndex, tasks.length - 1);
+      setTasks(newTaskList);
+    }
+  }
 
   return (
     <section className="container">
+      <SearchBar
+        searchValue = {searchTerm}
+        searchChange = {handleSearchChange}
+      />
       <TodoList 
-        list={tasks}
+        list={searchedTask}
         removeTask={removeTask} 
         changeStatus={toggleStatus}
         moveUp={moveUp}
         moveDown={moveDown}
+        moveTop = {moveTop}
+        moveBottom = {moveBottom}
       />
       <CreateTodo 
         inputValue={newInput} 

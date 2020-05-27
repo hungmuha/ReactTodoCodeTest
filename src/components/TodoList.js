@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 
-const TodoList = ({list, removeTask, changeStatus, moveUp, moveDown}) => {
+const TodoList = ({list, removeTask, changeStatus, moveUp, moveDown,moveTop,moveBottom}) => {
     let displaylist = list.map((item) => {
         return (
             <Item 
@@ -11,13 +11,15 @@ const TodoList = ({list, removeTask, changeStatus, moveUp, moveDown}) => {
                 changeStatus = {changeStatus}
                 moveUp = {moveUp}
                 moveDown ={moveDown}
+                moveTop = {moveTop}
+                moveBottom = {moveBottom}
             />
         )
     });
 
     return(
         <div className="row justify-content-center">
-            <div className="col-sm-4">
+            <div className="col-sm-9">
                 {displaylist}
             </div>
         </div>
