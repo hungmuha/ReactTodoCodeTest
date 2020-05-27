@@ -68,6 +68,13 @@ const App = () => {
     });
     setTasks(newTaskList);
   };
+  const changeTaskTitle = (event,item) => {
+     item.title = event.target.value;
+     let newTaskList = tasks.map((task) => {
+      return task.taskID === item.taskID ? item : task;
+    });
+    setTasks(newTaskList);
+  }
   const moveUp = item => {
     let itemIndex = tasks.indexOf(item);
     if(itemIndex > 0) {
@@ -98,9 +105,9 @@ const App = () => {
   }
 
   return (
-    <section className="container row justify-content-center">
+    <section className="container row justify-content-center ">
       <div className="col-sm-10">
-        <div className="card">
+        <div className="card shadow">
           <div className="card-body">
             <h2 className="card-title text-uppercase">To Do List</h2>
             <SearchBar
@@ -111,6 +118,7 @@ const App = () => {
               list={searchedTask}
               removeTask={removeTask} 
               changeStatus={toggleStatus}
+              changeTaskTitle ={changeTaskTitle}
               moveUp={moveUp}
               moveDown={moveDown}
               moveTop = {moveTop}
