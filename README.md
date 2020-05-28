@@ -40,11 +40,9 @@
 
 **Resoures**
 1. https://getbootstrap.com/docs/4.5/getting-started/introduction/
-2. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-3. https://reactjs.org/docs/hooks-reference.html
-4. https://regex101.com/
-5. https://javascript.info/localstorage
-6. https://www.robinwieruch.de/react-libraries#react-state-management
+2. https://reactjs.org/docs/hooks-reference.html
+3. https://javascript.info/localstorage
+4. https://www.robinwieruch.de/react-libraries#react-state-management
 
 **Other informations**
 live github page: https://hungmuha.github.io/ReactTodoCodeTest/
