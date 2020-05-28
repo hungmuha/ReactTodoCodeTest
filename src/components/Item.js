@@ -16,10 +16,10 @@ const Item = ({item, removeTask, changeStatus, moveUp, moveDown,moveTop,moveBott
                         <span className="sr-only">Toggle Dropdown</span>
                     </button>
                     <div className={"dropdown-menu " + (showDropdown? "show": "")}>
-                        <button type="button" className="dropdown-item btn btn-outline-success btn-sm" onClick={()=> toggleDropdown(moveUp(item))}>Up</button>
-                        <button type="button" className="dropdown-item btn btn-outline-info btn-sm" onClick={()=> toggleDropdown(moveDown(item))}>Down</button>
-                        <button type="button" className="dropdown-item btn btn-outline-primary btn-sm" onClick={()=> toggleDropdown(moveTop(item))}>Top</button>
-                        <button type="button" className="dropdown-item btn btn-outline-secondary btn-sm" onClick={()=> toggleDropdown(moveBottom(item))}>Bottom</button>
+                        <button type="button" className="dropdown-item btn btn-sm" onClick={()=> toggleDropdown(moveUp(item))}>Up</button>
+                        <button type="button" className="dropdown-item btn btn-sm" onClick={()=> toggleDropdown(moveDown(item))}>Down</button>
+                        <button type="button" className="dropdown-item btn btn-sm" onClick={()=> toggleDropdown(moveTop(item))}>Top</button>
+                        <button type="button" className="dropdown-item btn btn-sm" onClick={()=> toggleDropdown(moveBottom(item))}>Bottom</button>
                     </div>
                 </div>
                 <input 
