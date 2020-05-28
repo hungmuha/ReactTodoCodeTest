@@ -18,6 +18,7 @@ const Task = function(title) {
   this.complete = false;
   this.taskID = randomNum.concat('-',Date.now());
 };
+//custom hook to save the objects in local state
 const useCustomLocalState = (key,initialState) => {
   const [value,setValue] = useState(JSON.parse(localStorage.getItem(key))||initialState);
 
@@ -32,8 +33,9 @@ const App = () => {
   const [newInput, setNewInput] = useState('');
   const [searchTerm, setNewSearch] = useState('');
   const [isError,setError] = useState(false);
-
   const [tasks,setTasks] = useCustomLocalState('savedTask',[]);
+
+  //handle search input change
   const handleSearchChange = event => {
     setNewSearch(event.target.value);
   }
@@ -41,6 +43,7 @@ const App = () => {
     task.title.toLowerCase().includes(searchTerm.toLowerCase())  
   );
 
+  //handle input change for new task
   const handleInputChange = event => {
     setNewInput(event.target.value);
   };
@@ -59,6 +62,7 @@ const App = () => {
     let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
     setTasks(newTaskList);
   };
+  //to change task status
   const toggleStatus = item => {
     item.complete = !item.complete;
     let newTaskList = tasks.map((task) => {
@@ -66,6 +70,7 @@ const App = () => {
     });
     setTasks(newTaskList);
   };
+  //change task title
   const changeTaskTitle = (event,item) => {
      item.title = event.target.value;
      let newTaskList = tasks.map((task) => {

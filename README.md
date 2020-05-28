@@ -46,6 +46,7 @@
 5. https://javascript.info/localstorage
 6. https://www.robinwieruch.de/react-libraries#react-state-management
 
-
+**Other informations**
+live github page: https://hungmuha.github.io/ReactTodoCodeTest/
 email: hungmuha712@gmail.com
 Please let me know if you have any questions.
