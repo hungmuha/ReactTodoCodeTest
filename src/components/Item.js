@@ -2,9 +2,11 @@ import React,{useState} from 'react';
 
 const Item = ({item, removeTask, changeStatus, moveUp, moveDown,moveTop,moveBottom,changeTaskTitle}) => {
     const [showDropdown, setDropdown] = useState(false);
+
     const toggleDropdown = () => {
         setDropdown(!showDropdown);
     }
+    
     return (
         <div className="list-group-item d-flex flex-row align-items-center">
             <div className="flex-grow-1 input-group">

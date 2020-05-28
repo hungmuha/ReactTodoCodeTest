@@ -4,59 +4,40 @@ import TodoList from './components/TodoList';
 import SearchBar from './components/SearchBar';
 import './App.css';
 
-//this function is used to swap 2 elements in an array
-const swap = function(arr,idx1,idx2) {
-  [arr[idx1],arr[idx2]] = [arr[idx2],arr[idx1]];
-  return arr;
-}
-const nonEmptyRegex = /\w.*$/i;
-//Task class 
-const Task = function(title) {
-  let randomNum = Math.floor(Math.random()*1000*7).toString();
-
-  this.title = title;
-  this.complete = false;
-  this.taskID = randomNum.concat('-',Date.now());
-};
-//custom hook to save the objects in local state
-const useCustomLocalState = (key,initialState) => {
-  const [value,setValue] = useState(JSON.parse(localStorage.getItem(key))||initialState);
-
-  useEffect(() => {
-    localStorage.setItem(key,JSON.stringify(value));
-  },[key,value]);
-  
-  return [value,setValue];
-}
-
 const App = () => {
-  const [newInput, setNewInput] = useState('');
-  const [searchTerm, setNewSearch] = useState('');
-  const [isError,setError] = useState(false);
-  const [tasks,setTasks] = useCustomLocalState('savedTask',[]);
+  //custom hook to save the objects in local state
+  const useCustomLocalStateHook = (key,initialState) => {
+    const [value,setValue] = useState(JSON.parse(localStorage.getItem(key))||initialState);
 
-  //handle search input change
-  const handleSearchChange = event => {
-    setNewSearch(event.target.value);
+    useEffect(() => {
+      localStorage.setItem(key,JSON.stringify(value));
+    },[key,value]);
+    
+    return [value,setValue];
   }
+
+  const [searchTerm, setNewSearch] = useState('');
+  const [tasks,setTasks] = useCustomLocalStateHook('savedTask',[]);
+
+  //this function is used to swap 2 elements in an array
+  const swap = function(arr,idx1,idx2) {
+    [arr[idx1],arr[idx2]] = [arr[idx2],arr[idx1]];
+    return arr;
+  }
+
   const searchedTask = tasks.filter(task => 
     task.title.toLowerCase().includes(searchTerm.toLowerCase())  
   );
 
-  //handle input change for new task
-  const handleInputChange = event => {
-    setNewInput(event.target.value);
-  };
-  const handleNewtaskSubmit = event => {
-    event.preventDefault();
-    if(newInput.match(nonEmptyRegex)) {
-      let newTask = new Task(newInput);
-      setTasks([...tasks,newTask]);
-      setNewInput('');
-      setError(false);
-    } else {
-      setError(true);
+  const handleNewtaskSubmit = (newInput) => {
+    const randomNum = Math.floor(Math.random()*1000*7).toString();
+    let newTask = {
+      title: newInput,
+      complete: false,
+      taskID: randomNum.concat('-',Date.now())
     };
+    const newTaskList = [...tasks, newTask];
+    setTasks(newTaskList);
   };
   const removeTask = item => {
     let newTaskList = tasks.filter(task => task.taskID !== item.taskID);
@@ -115,7 +96,7 @@ const App = () => {
             <h2 className="card-title text-uppercase">To Do List</h2>
             <SearchBar
               searchValue = {searchTerm}
-              searchChange = {handleSearchChange}
+              searchChange = {(e) => setNewSearch(e.target.value)}
             />
             <TodoList 
               list={searchedTask}
@@ -128,10 +109,7 @@ const App = () => {
               moveBottom = {moveBottom}
             />
             <CreateTodo 
-              inputValue={newInput} 
-              inputChange={handleInputChange} 
               submitNewTask={handleNewtaskSubmit}
-              isError= {isError}
             />
           </div>
         </div>
