@@ -31,7 +31,7 @@
 4. Users should be able to search / filter the list using a text input box at the top of the list. If a user types a string into the text input box, then only the todo list items that contain that string should be displayed.
 
 **Extra**
-- if the user adding a task with just space or random characters without letters or numbers, there will be an error that is shown below the input
+- if the user adding a task with just space without letters or numbers, there will be an error that is shown below the input
 
 **Step to run the app in local env**
 1. npm install
